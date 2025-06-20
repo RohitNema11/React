@@ -6,8 +6,9 @@ function NavBar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     return (
-       <nav className="fixed top-0 left-0 w-full z-50 bg-black text-white px-6 py-4 flex justify-between items-center m-0 shadow-md">
-            
+
+        <nav className="bg-black text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50 m-0">
+
             <div className="flex items-center gap-3">
                 <Link to="/" className="flex items-center gap-2">
                     <img 
@@ -21,6 +22,7 @@ function NavBar() {
 
             <div className="flex items-center gap-6">
                 <Link to="/" className="nav-link">Home</Link>
+                <Link to="/contact" className="nav-link">Contact</Link>
                 <Link to="/watchlist" className="nav-link">Watchlist</Link>
 
                 <div
@@ -30,7 +32,6 @@ function NavBar() {
                     Genres ▼
                 </div>
 
-                {/* Dropdown Menu */}
                 {isDropdownOpen && (
                     <div className="absolute top-full mt-2 right-6 bg-white text-black rounded-md flex flex-col w-40 z-50">
                         <Link to="/action" className="nav-link">Action</Link>

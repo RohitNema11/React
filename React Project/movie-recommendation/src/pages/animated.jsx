@@ -3,7 +3,7 @@ import MovieCard from "../components/movieCard";
 import {getAnimatedMovies } from "../services/api";
 import MovieDetails from "./MovieDetails";
 
-function Animated() {
+function Animated({wishlist, setWishlist}) {
 
       const [movies, setMovies] = useState([]);
       const [error, setError] = useState(null);
@@ -40,7 +40,9 @@ function Animated() {
   ) : (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       {movies.map((movie) => (
-        <MovieCard movie={movie} key={movie.id} onClick={() => setSelectedMovieId(movie.id)} />
+
+        <MovieCard movie={movie} key={movie.id} wishlist={wishlist} setWishlist={setWishlist} onClick={() => setSelectedMovieId(movie.id)} />
+      
       ))}
     </div>
   )}
