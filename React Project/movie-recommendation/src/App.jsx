@@ -19,7 +19,7 @@ function App() {
   return (
     <div>
       <NavBar/> 
-      <main className='pt-10'>
+      <main>
       <Routes>
         <Route path='/' element={<Home wishlist={wishlist} setWishlist={setWishlist} />}/>
         <Route path='/watchlist' element={<Watchlist wishlist={wishlist} setWishlist={setWishlist} />}/>
