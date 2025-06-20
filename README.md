@@ -1,2 +1,0 @@
-# React
-MIST Summer Project
