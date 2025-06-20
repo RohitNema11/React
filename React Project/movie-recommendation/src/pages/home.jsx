@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import MovieCard from "../components/movieCard";
+import MovieDetails from "./MovieDetails";
 import { searchMovies, getPopularMovies } from "../services/api";
+
 
 function Home({wishlist, setWishlist}) {
 
@@ -8,7 +10,8 @@ function Home({wishlist, setWishlist}) {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-   
+  const [selectedMovieId, setSelectedMovieId] = useState(null); // ✅ modal control
+
   useEffect(() => {
     const loadPopularMovies = async () => {
       try {
@@ -21,34 +24,36 @@ function Home({wishlist, setWishlist}) {
         setLoading(false);
       }
     };
-
-    loadPopularMovies()
+    loadPopularMovies();
   }, []);
 
-    const handleSearch = async (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    if (!searchQuery.trim()) return
-    if (loading) return
-
-    setLoading(true)
+    if (!searchQuery.trim() || loading) return;
+    setLoading(true);
     try {
-        const searchResults = await searchMovies(searchQuery)
-        setMovies(searchResults)
-        setError(null)
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
     } catch (err) {
-        console.log(err)
-        setError("Failed to search movies...")
+      console.log(err);
+      setError("Failed to search movies...");
     } finally {
-        setLoading(false)
+      setLoading(false);
     }
   };
 
-    return (
+  const handleCardClick = (movieId) => {
+    setSelectedMovieId(movieId);
+  };
+
+  return (
     <>
+
     <div className="w-screen h-[60vh] relative flex items-center bg-cover bg-center" style={{ backgroundImage: `url("/home-bg-2.avif")` }}>
         <div className="px-8 text-left flex flex-col gap-4">
           <div>
-              <h1 className="text-4xl font-bold mb-2">Moviepaglu ?</h1>
+              <h1 className="text-4xl font-bold mb-2">Watch Smarter</h1>
               <h3 className="text-xl">Your one-stop spot for discovering awesome movies.</h3>
           </div>
 
@@ -84,13 +89,25 @@ function Home({wishlist, setWishlist}) {
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       {movies.map((movie) => (
         <MovieCard movie={movie} key={movie.id} wishlist={wishlist} setWishlist={setWishlist} />
+        <div key={movie.id} onClick={() => handleCardClick(movie.id)}>
       ))}
     </div>
   )}
 </div>
 
+        {selectedMovieId && (
+        <MovieDetails
+          movieId={selectedMovieId}
+          onClose={() => setSelectedMovieId(null)}
+        />
+      )}
+      
+      <footer className="bg-black text-white p-4 text-center">
+        © 2025 Flickwise. All Rights Reserved.
+      </footer>  
     </>
-    );
+
+  );
 }
 
 export default Home;

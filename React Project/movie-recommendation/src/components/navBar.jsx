@@ -6,8 +6,9 @@ function NavBar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     return (
+
         <nav className="bg-black text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50 m-0">
-            {/* Logo + Title */}
+
             <div className="flex items-center gap-3">
                 <Link to="/" className="flex items-center gap-2">
                     <img 
@@ -19,7 +20,6 @@ function NavBar() {
                 </Link>
             </div>
 
-            {/* Navigation Links */}
             <div className="flex items-center gap-6">
                 <Link to="/" className="nav-link">Home</Link>
                 <Link to="/contact" className="nav-link">Contact</Link>
@@ -32,9 +32,8 @@ function NavBar() {
                     Genres ▼
                 </div>
 
-                {/* Dropdown Menu */}
                 {isDropdownOpen && (
-                    <div className="absolute top-full mt-2 right-6 bg-white text-black shadow-md rounded-md flex flex-col w-40 z-50">
+                    <div className="absolute top-full mt-2 right-6 bg-white text-black rounded-md flex flex-col w-40 z-50">
                         <Link to="/action" className="nav-link">Action</Link>
                         <Link to="/comedy" className="nav-link">Comedy</Link>
                         <Link to="/thriller" className="nav-link">Thriller</Link>

@@ -16,7 +16,7 @@ export const getPopularMovies = async () => {
   const data = await response.json();
   return data.results;
 };
-
+ 
 export const getActionMovies = async () => {
   const genreId = 28
   const response = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`);
@@ -64,4 +64,10 @@ export const getCrimeMovies = async () => {
   const response = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`);
   const data = await response.json();
   return data.results;
+};
+
+export const getMovieDetails = async (id) => {
+  const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`);
+  const data = await response.json();
+  return data;
 };
