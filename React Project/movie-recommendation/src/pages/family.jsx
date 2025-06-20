@@ -1,12 +1,15 @@
  import { useState, useEffect } from "react";
 import MovieCard from "../components/movieCard";
 import { searchMovies, getFamilyMovies } from "../services/api";
+import MovieDetails from "./MovieDetails";
 
 function Family() {
 
       const [movies, setMovies] = useState([]);
       const [error, setError] = useState(null);
       const [loading, setLoading] = useState(true);
+      const [selectedMovieId, setSelectedMovieId] = useState(null);
+
        
       useEffect(() => {
         const loadFamilyMovies = async () => {
@@ -38,10 +41,16 @@ function Family() {
   ) : (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       {movies.map((movie) => (
-        <MovieCard movie={movie} key={movie.id} />
+        <MovieCard movie={movie} key={movie.id} onClick={() => setSelectedMovieId(movie.id)}/>
       ))}
     </div>
   )}
+  {selectedMovieId && (
+        <MovieDetails
+          movieId={selectedMovieId}
+          onClose={() => setSelectedMovieId(null)}
+        />
+      )}
 </div>
 )
     
