@@ -8,7 +8,7 @@ function Home({ wishlist, setWishlist }) {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [selectedMovieId, setSelectedMovieId] = useState(null); // ✅ modal control
+  const [selectedMovieId, setSelectedMovieId] = useState(null); 
 
   useEffect(() => {
     const loadPopularMovies = async () => {

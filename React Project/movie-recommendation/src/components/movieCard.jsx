@@ -5,7 +5,7 @@ function MovieCard({ movie, wishlist = [], setWishlist = () => {} }) {
   const isFavourite = wishlist?.some((m) => m.id === movie.id);
 
   function onFavouriteClick(e) {
-    e.stopPropagation(); // Prevent modal open when heart is clicked
+    e.stopPropagation(); 
     if (isFavourite) {
       setWishlist(wishlist.filter((m) => m.id !== movie.id));
     } else {

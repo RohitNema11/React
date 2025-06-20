@@ -8,7 +8,7 @@ function Action() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedMovieId, setSelectedMovieId] = useState(null);
-  const [wishlist, setWishlist] = useState([]); // ✅ Added wishlist state
+  const [wishlist, setWishlist] = useState([]); 
 
   useEffect(() => {
     const loadActionMovies = async () => {
@@ -48,7 +48,7 @@ function Action() {
             ))}
           </div>
 
-          {/* ✅ Movie Modal */}
+          
           {selectedMovieId && (
             <MovieDetails
               movieId={selectedMovieId}
