@@ -6,7 +6,7 @@ function NavBar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     return (
-        <nav className="bg-black text-white px-6 py-4 flex justify-between items-center relative m-0">
+        <nav className="bg-black text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50 m-0">
             {/* Logo + Title */}
             <div className="flex items-center gap-3">
                 <Link to="/" className="flex items-center gap-2">
@@ -22,6 +22,7 @@ function NavBar() {
             {/* Navigation Links */}
             <div className="flex items-center gap-6">
                 <Link to="/" className="nav-link">Home</Link>
+                <Link to="/contact" className="nav-link">Contact</Link>
                 <Link to="/watchlist" className="nav-link">Watchlist</Link>
 
                 <div

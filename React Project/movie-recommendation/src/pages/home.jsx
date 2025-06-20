@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import MovieCard from "../components/movieCard";
 import { searchMovies, getPopularMovies } from "../services/api";
 
-function Home() {
+function Home({wishlist, setWishlist}) {
 
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
@@ -45,28 +45,28 @@ function Home() {
 
     return (
     <>
-    <div className="w-screen bg-black text-white h-[60vh] flex items-center">
+    <div className="w-screen h-[60vh] relative flex items-center bg-cover bg-center" style={{ backgroundImage: `url("/home-bg-2.avif")` }}>
         <div className="px-8 text-left flex flex-col gap-4">
-        <div>
-            <h1 className="text-4xl font-bold mb-2">Moviepaglu ?</h1>
-            <h3 className="text-xl">Your one-stop spot for discovering awesome movies.</h3>
-        </div>
+          <div>
+              <h1 className="text-4xl font-bold mb-2">Moviepaglu ?</h1>
+              <h3 className="text-xl">Your one-stop spot for discovering awesome movies.</h3>
+          </div>
 
-        <form onSubmit={handleSearch} className="flex mt-4">
-        <input
-        type="text"
-        placeholder="Search for movies..."
-        className="px-4 py-2 rounded-l-md text-black focus:outline-none w-64"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button
-        type="submit"
-        className="bg-red-600 px-4 py-2 rounded-r-md hover:bg-red-700 transition"
-        >
-        Search
-        </button>
-        </form>
+          <form onSubmit={handleSearch} className="flex mt-4">
+            <input
+              type="text"
+              placeholder="Search for movies..."
+              className="px-4 py-2 rounded-l-md text-black focus:outline-none w-64"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button
+              type="submit"
+              className="bg-black text-white px-4 py-2 rounded-r-md hover:bg-slate-500 transition"
+            >
+              Search
+            </button>
+          </form>
         </div>
     </div>
 
@@ -83,7 +83,7 @@ function Home() {
   ) : (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       {movies.map((movie) => (
-        <MovieCard movie={movie} key={movie.id} />
+        <MovieCard movie={movie} key={movie.id} wishlist={wishlist} setWishlist={setWishlist} />
       ))}
     </div>
   )}
