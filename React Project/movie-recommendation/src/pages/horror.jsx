@@ -27,6 +27,9 @@ function Horror({wishlist, setWishlist}) {
         loadHorrorMovies()
       }, []);
     
+      const handleCardClick = (movieId) => {
+    setSelectedMovieId(movieId);
+  };
 
         return(
             <div className="p-8 bg-gray-950 min-h-screen text-white">
@@ -41,9 +44,9 @@ function Horror({wishlist, setWishlist}) {
   ) : (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       {movies.map((movie) => (
-
-        <MovieCard movie={movie} key={movie.id} wishlist={wishlist} setWishlist={setWishlist} onClick={() => setSelectedMovieId(movie.id)}/>
-
+        <div key={movie.id} onClick={() => handleCardClick(movie.id)} className="cursor-pointer hover:scale-105 transition-transform">
+        <MovieCard movie={movie} key={movie.id} wishlist={wishlist} setWishlist={setWishlist}/>
+        </div>
       ))}
     </div>
   )}

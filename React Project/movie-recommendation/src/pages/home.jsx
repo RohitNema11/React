@@ -87,7 +87,7 @@ function Home({ wishlist, setWishlist }) {
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {movies.map((movie) => (
-              <div key={movie.id} onClick={() => handleCardClick(movie.id)}>
+              <div key={movie.id} onClick={() => handleCardClick(movie.id)} className="cursor-pointer hover:scale-105 transition-transform">
                 <MovieCard
                   movie={movie}
                   wishlist={wishlist}
