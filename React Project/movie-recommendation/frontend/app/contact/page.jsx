@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -16,11 +17,29 @@ export default function ContactPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setForm({ name: "", email: "", phone: "", message: "" });
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    if (res.ok) {
+      setSubmitted(true);
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } else {
+      console.error("Server error");
+    }
+  } catch (err) {
+    console.error("Error submitting form:", err);
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-4">
@@ -76,10 +95,17 @@ export default function ContactPage() {
 
         {submitted && (
           <p className="text-green-500 mt-4">
-            Message sent successfully (no backend connected)!
+            Message sent successfully !
           </p>
         )}
+
+        <Link href="/reviews">
+  <button className="mt-4 bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600">
+    See All Reviews
+  </button>
+</Link>
       </div>
+
     </div>
   );
 }
