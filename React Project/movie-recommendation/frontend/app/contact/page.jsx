@@ -46,7 +46,7 @@ export default function ContactPage() {
       <div className="max-w-md w-full text-center">
         <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
         <p className="mb-6 text-gray-400">
-          Have any questions or feedback? We'd love to hear from you!
+          Have something to say ? Drop us a review—we’re all ears !
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-black">

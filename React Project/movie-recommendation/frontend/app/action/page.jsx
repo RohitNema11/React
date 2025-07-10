@@ -36,6 +36,8 @@ export default function ActionPage() {
 
   return (
     <div className="p-8 bg-gray-950 min-h-screen text-white">
+      <h1 className="text-3xl font-bold mb-8 text-center">Action</h1>
+      {/* ...existing Action genre content... */}
       {error && (
         <div className="text-red-500 font-semibold mb-4">{error}</div>
       )}

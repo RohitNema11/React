@@ -29,6 +29,7 @@ export default function HorrorPage() {
 
   return (
     <div className="p-8 bg-gray-950 min-h-screen text-white">
+            <h1 className="text-3xl font-bold mb-8 text-center">Horror</h1>
       {error && <div className="text-red-500">{error}</div>}
 
       {loading ? (
