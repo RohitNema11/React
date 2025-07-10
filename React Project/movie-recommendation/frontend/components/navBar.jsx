@@ -10,7 +10,6 @@ function NavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -33,7 +32,7 @@ function NavBar() {
         </Link>
       </div>
 
-      {/* Hamburger Icon for Mobile */}
+  
       <button
         className="md:hidden flex flex-col gap-1 focus:outline-none"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -44,7 +43,7 @@ function NavBar() {
         <span className="w-6 h-0.5 bg-white rounded"></span>
       </button>
 
-      {/* Desktop Menu */}
+     
       <div className="hidden md:flex items-center gap-6 relative" ref={dropdownRef}>
         <Link href="/" className="hover:text-blue-300 hover:scale-105">Home</Link>
         <Link href="/contact" className="hover:text-blue-300 hover:scale-105">Contact</Link>
@@ -105,14 +104,14 @@ function NavBar() {
         )}
       </div>
 
-      {/* Mobile Menu */}
+    
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-black text-white flex flex-col gap-2 py-4 px-6 z-50">
           <Link href="/" className="hover:text-blue-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
           <Link href="/contact" className="hover:text-blue-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
           <Link href="/watchlist" className="hover:text-blue-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>Watchlist</Link>
           
-          {/* Dropdown wrapped with ref */}
+        
           <div ref={dropdownRef}>
             <div
               className="hover:text-blue-300 cursor-pointer py-2"

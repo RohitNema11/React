@@ -18,7 +18,7 @@ function MovieCard({ movie, wishlist = [], setWishlist = () => {} }) {
 
   const imagePath = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : '/fallback.jpg'; // Optional: Add fallback.jpg to /public if needed
+    : '/fallback.jpg';
 
   return (
     <div className="movie-card bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition flex flex-col justify-between h-[450px]">
