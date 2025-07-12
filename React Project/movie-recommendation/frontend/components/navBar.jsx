@@ -28,13 +28,13 @@ function NavBar() {
       <div className="flex items-center gap-3">
         <Link href="/" className="flex items-center gap-2">
           <Image src={logo} alt="Logo" className="w-8 h-8" width={32} height={32} />
-          <span className="text-2xl font-bold">Flickwise</span>
+          <span className="text-2xl font-bold font-sans tracking-wide">Flickwise</span>
         </Link>
       </div>
 
   
       <button
-        className="md:hidden flex flex-col gap-1 focus:outline-none"
+        className="md:hidden flex flex-col gap-1 focus:outline-none cursor-pointer"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="Toggle menu"
       >

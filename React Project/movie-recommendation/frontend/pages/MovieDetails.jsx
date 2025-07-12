@@ -24,7 +24,7 @@ function MovieDetails({ movieId, onClose }) {
       <div className="relative bg-gray-900 text-white rounded-xl shadow-2xl p-6 max-w-5xl w-full mx-4">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-white text-2xl hover:text-red-500"
+          className="absolute top-4 right-4 text-white text-2xl hover:text-red-500 cursor-pointer"
         >
           &times;
         </button>

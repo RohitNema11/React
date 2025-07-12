@@ -1,11 +1,19 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useWishlist } from "@/context/WishlistContext";
 import MovieCard from "@/components/movieCard";
+import MovieDetails from '@/pages/MovieDetails'; 
+
 
 export default function WatchlistPage() {
   const { wishlist, setWishlist } = useWishlist();
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
 
+const handleCardClick = (movieId) => {
+    setSelectedMovieId(movieId);
+  };  
+  
   return (
     <div className="min-h-screen bg-black text-white px-4 py-8">
       {wishlist.length === 0 ? (
@@ -23,14 +31,27 @@ export default function WatchlistPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {wishlist.map((movie) => (
+              <div
+                key={movie.id}
+                onClick={() => handleCardClick(movie.id)}
+                className="cursor-pointer hover:scale-105 transition-transform"
+              >
               <MovieCard
                 key={movie.id}
-                movie={movie}
+                movie={movie} 
                 wishlist={wishlist}
                 setWishlist={setWishlist}
               />
+              </div>
             ))}
           </div>
+
+          {selectedMovieId && (
+            <MovieDetails
+              movieId={selectedMovieId}
+              onClose={() => setSelectedMovieId(null)}
+            />
+          )}
         </>
       )}
     </div>

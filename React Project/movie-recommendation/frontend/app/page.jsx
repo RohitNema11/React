@@ -54,8 +54,8 @@ export default function HomePage() {
   return (
     <>
       <div
-        className="w-screen h-[60vh] relative flex items-center bg-cover bg-center"
-        style={{ backgroundImage: `url("/home-bg-2.avif")` }}
+        className="w-full min-h-[60vh] bg-cover bg-center flex items-center"
+        style={{ backgroundImage: `url("/thumb-1920-1388647.jpg")` }}
       >
         <div className="px-8 text-left flex flex-col gap-4">
           <div>
@@ -75,7 +75,7 @@ export default function HomePage() {
             />
             <button
               type="submit"
-              className="bg-black text-white px-4 py-2 rounded-r-md hover:bg-blue-950 transition"
+              className="bg-black text-white px-4 py-2 rounded-r-md hover:bg-blue-950 cursor-pointer transition"
             >
               Search
             </button>
