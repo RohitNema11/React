@@ -15,20 +15,29 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [selectedMovieId, setSelectedMovieId] = useState(null);
 
+  const resetToHome = async () => {
+    setSearchQuery('');
+    setLoading(true);
+    try {
+      const popularMovies = await getPopularMovies();
+      setMovies(popularMovies);
+      setError(null);
+    } catch (err) {
+      console.error(err);
+      setError('Failed to load movies...');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const loadPopularMovies = async () => {
-      try {
-        const popularMovies = await getPopularMovies();
-        console.log('Popular movies:', popularMovies);
-        setMovies(popularMovies);
-      } catch (err) {
-        console.error(err);
-        setError('Failed to load movies...');
-      } finally {
-        setLoading(false);
-      }
+    resetToHome();
+
+    window.resetFlickwiseHome = resetToHome;
+
+    return () => {
+      window.resetFlickwiseHome = null;
     };
-    loadPopularMovies();
   }, []);
 
   const handleSearch = async (e) => {
@@ -69,7 +78,7 @@ export default function HomePage() {
             <input
               type="text"
               placeholder="Search for movies..."
-              className="px-4 py-2 rounded-l-md text-black focus:outline-none w-64 bg-white "
+              className="px-4 py-2 rounded-l-md text-black focus:outline-none w-64 bg-white"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />

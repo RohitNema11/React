@@ -10,6 +10,13 @@ function NavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  const handleHomeClick = (e) => {
+    e.preventDefault();
+    if (typeof window !== 'undefined' && typeof window.resetFlickwiseHome === 'function') {
+      window.resetFlickwiseHome();
+    }
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -26,10 +33,10 @@ function NavBar() {
   return (
     <nav className="bg-black text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50 m-0">
       <div className="flex items-center gap-3">
-        <Link href="/" className="flex items-center gap-2">
+         <a href="/" onClick={handleHomeClick} className="flex items-center gap-2">
           <Image src={logo} alt="Logo" className="w-8 h-8" width={32} height={32} />
           <span className="text-2xl font-bold font-sans tracking-wide">Flickwise</span>
-        </Link>
+        </a>
       </div>
 
   
@@ -45,7 +52,7 @@ function NavBar() {
 
      
       <div className="hidden md:flex items-center gap-6 relative" ref={dropdownRef}>
-        <Link href="/" className="hover:text-blue-300 hover:scale-105">Home</Link>
+        <a href="/" onClick={handleHomeClick} className="hover:text-blue-300 hover:scale-105">Home</a>
         <Link href="/contact" className="hover:text-blue-300 hover:scale-105">Contact</Link>
         <Link href="/watchlist" className="hover:text-blue-300 hover:scale-105">Watchlist</Link>
 
