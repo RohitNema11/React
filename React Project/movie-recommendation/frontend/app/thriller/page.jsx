@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { getThrillerMovies } from "@/services/api";
 import MovieCard from "@/components/movieCard";
-import MovieDetails from "@/pages/MovieDetails";
+import MovieDetails from "@/components/MovieDetails";
 import { useWishlist } from "@/context/WishlistContext";
 
 export default function ThrillerPage() {

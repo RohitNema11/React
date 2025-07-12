@@ -52,7 +52,7 @@ function NavBar() {
 
      
       <div className="hidden md:flex items-center gap-6 relative" ref={dropdownRef}>
-        <a href="/" onClick={handleHomeClick} className="hover:text-blue-300 hover:scale-105">Home</a>
+        <Link href="/" className="hover:text-blue-300 hover:scale-105">Home</Link>
         <Link href="/contact" className="hover:text-blue-300 hover:scale-105">Contact</Link>
         <Link href="/watchlist" className="hover:text-blue-300 hover:scale-105">Watchlist</Link>
 

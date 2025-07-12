@@ -87,7 +87,7 @@ export default function ContactPage() {
           />
           <button
             type="submit"
-            className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded font-semibold"
+            className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded font-semibold cursor-pointer"
           >
             Send Message
           </button>
@@ -100,7 +100,7 @@ export default function ContactPage() {
         )}
 
         <Link href="/reviews">
-  <button className="mt-4 bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600">
+  <button className="mt-4 bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600 cursor-pointer">
     See All Reviews
   </button>
 </Link>

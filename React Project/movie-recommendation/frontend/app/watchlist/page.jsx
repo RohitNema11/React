@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useWishlist } from "@/context/WishlistContext";
 import MovieCard from "@/components/movieCard";
-import MovieDetails from '@/pages/MovieDetails'; 
+import MovieDetails from '@/components/MovieDetails'; 
 
 
 export default function WatchlistPage() {

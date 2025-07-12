@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import MovieCard from '@/components/movieCard';
-import MovieDetails from '@/pages/MovieDetails'; 
+import MovieDetails from '@/components/MovieDetails'; 
 import { getActionMovies } from '@/services/api';
 import { useWishlist } from '@/context/WishlistContext';
 
