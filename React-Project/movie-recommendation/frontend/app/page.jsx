@@ -68,8 +68,8 @@ export default function HomePage() {
       >
         <div className="px-8 text-left flex flex-col gap-4">
           <div>
-            <h1 className="text-4xl font-bold mb-2">Watch Smarter</h1>
-            <h3 className="text-xl">
+            <h1 className="text-4xl font-bold mb-2 text-white">Watch Smarter</h1>
+            <h3 className="text-xl text-white">
               Your one-stop spot for discovering awesome movies.
             </h3>
           </div>
